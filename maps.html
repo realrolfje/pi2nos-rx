@@ -1,139 +1,23 @@
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
-<script type="text/javascript"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
 
-$(document).ready(function() {
-  var repeaters = {
-	  "type": "FeatureCollection",
-	  "features": [
-		{
-		  "type": "Feature",
-		  "geometry": {
-			"type": "Point",
-			"coordinates": [5.1729, 52.2368]
-		  },
-		  "id":"Rx_Hilversum",
-		  "properties": {
-			"signal": "10",
-			"squelch" : "closed"
-		  }
-		},
-		{
-		  "type": "Feature",
-		  "geometry": {
-			"type": "Point",
-			"coordinates": [5.022297, 52.100284]
-		  },
-		  "id":"Rx_Utrecht",
-		  "properties": {
-			"signal": "10",
-			"squelch" : "closed"
-		  }
-		},
-        {
-		  "type": "Feature",
-		  "geometry": {
-			"type": "Point",
-			"coordinates": [3.924334, 51.653101]
-		  },
-		  "id":"Rx_Zierikzee",
-		  "properties": {
-			"signal": "10",
-			"squelch" : "closed"
-		  }
-		},
-        {
-		  "type": "Feature",
-		  "geometry": {
-			"type": "Point",
-			"coordinates": [4.929472, 52.408901]
-		  },
-		  "id":"Rx_Amsterdam",
-		  "properties": {
-			"signal": "10",
-			"squelch" : "closed"
-		  }
-		},
-        {
-		  "type": "Feature",
-		  "geometry": {
-			"type": "Point",
-			"coordinates": [6.022805, 52.239973]
-		  },
-		  "id":"Rx_Apeldoorn",
-		  "properties": {
-			"signal": "10",
-			"squelch" : "closed"
-		  }
-		}
-	  ]
+  <script type="text/javascript" src="configuration.js"></script> 
+  <script type="text/javascript" src="circlemap.js"></script> 
+
+  <script type="text/javascript"> 
+	$(document).ready(circleMap);
+  </script>
+
+  <style>
+	#map {
+	  height:550px;
+	  background:transparent;
 	}
-
-	var colors = {
-	  closed: "gray",
-	  open: "yellow",
-	  active: "red"
-	}
-
-  var myOptions = {
-    center: new google.maps.LatLng(52.2368, 5.1729),
-    zoom: 8,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    mapTypeControl: false
-  }
-
-  var map = new google.maps.Map(document.getElementById("map"), myOptions);
-
-  map.data.setStyle(function(feature) {
-    var magnitude = feature.getProperty('signal');
-    var color = colors[feature.getProperty('squelch')];
-    return {
-      icon: getCircle(magnitude, color)
-    };
-  });
-
-  var jsonStream = new EventSource('http://pi2nos.ampr.org:1535/json')
-  jsonStream.onmessage = function (e) {
-	  var message = JSON.parse(e.data);
-	  
-	  for(var i in repeaters.features) {
-	    var feature = repeaters.features[i];
-	    var receiver = message.rx[feature.id];
-	    feature.properties.signal = receiver.lvl;
-	    feature.properties.squelch = receiver.sql;
-      }
-
-	  // This may require rework to get rid of efficiency/redraw problems.
-	  map.data.addGeoJson(repeaters);
-  }
-});
-
-function getCircle(magnitude, color) {
-  var circle = {
-    path: google.maps.SymbolPath.CIRCLE,
-    fillColor: color,
-    fillOpacity: .3,
-//    scale: Math.pow(2, magnitude) / 2,
-    scale: Math.max(10, 1 * magnitude),
-    strokeColor: 'white',
-    strokeWeight: .5
-  };
-  return circle;
-}
-
-</script>
-
-<style>
-#map {
-  height:550px;
-  background:transparent;
-}
-</style>
-
+  </style>
 </head>
 
 <body>
-<div id="map"></div> 
+  <div id="map"></div> 
 </body> 
