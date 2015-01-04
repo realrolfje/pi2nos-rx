@@ -19,6 +19,18 @@ function heatMap(jQuery) {
 		  location: latLng,
 		  weight: 1
 		};
+		
+    draw_circle = new google.maps.Circle({
+        center: latLng,
+        radius: 1000,
+        strokeColor: 'black',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "black",
+        fillOpacity: 0.35,
+        map: map
+    });
+
 
 	heatmapData.push(weightedLoc);
   }
@@ -26,7 +38,8 @@ function heatMap(jQuery) {
   var heatmap = new google.maps.visualization.HeatmapLayer({
 	data: heatmapData,
 	dissipating: false,
-	opacity: 0.3,
+	radius: 0.3,
+	opacity: 0.5,
 	map: map
   });
 
@@ -41,5 +54,7 @@ function heatMap(jQuery) {
       }
       heatmap.setData(heatmapData);
   }
+  
+  
 }
 

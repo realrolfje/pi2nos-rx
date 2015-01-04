@@ -1,93 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-<title>PI2NOS</title>
-<style type="text/css">
-table {
-    border-collapse: collapse;
-    empty-cells: show;
-}
-
-td, th {
-    font: sans-serif;
-    border: 1px solid black;
-    padding: 3px;
-    background-color: #e0e0e0;
-}
-
-td.rx {
-    width: 120px;
-    text-align: left;
-}
-
-td.sql {
-    width: 50px;
-    text-align: center;
-}
-
-td.lvl {
-    width: 70px;
-    padding-right: 8px;
-    text-align: right;
-}
-
-td.bar {
-    width: 502px;
-}
-
-td.bar div {
-    width: 250px;
-    height: 10px;
-    border: 1px solid black;
-    background-color: #808080;
-}
-</style>
-<script language="JavaScript" type="text/JavaScript" src="http://pi2nos.ampr.org/javascript/jquery/jquery.js"></script>
-<script language="JavaScript" type="text/JavaScript">
-var firstMessage = 1;
-var jsonStream = new EventSource('http://pi2nos.ampr.org:1535/json')
-jsonStream.onmessage = function (e) {
-    var message = JSON.parse(e.data);
-    var list = message.rxlist.split(',');
-
-    if (firstMessage) {
-        var tab = "";
-        for (index = 0; index < list.length; ++index) {
-            tab = tab + '<tr id="'+list[index]+'">'+
-                        '<td class="rx">'+list[index]+'</td>'+
-                        '<td class="sql"></td><td class="lvl"></td>'+
-                        '<td class="bar"><div></div></td></tr>\r\n';
-        }
-        $(tab).replaceAll(".init");
-        firstMessage = 0;
-    }
-
-    for (index = 0; index < list.length; ++index) {
-        var rx = list[index];
-        var sql = message.rx[rx]['sql'];
-        var lvl = message.rx[rx]['lvl'];
-        var tri = 'tr#'+rx+' ';
-        $(tri+'td.sql').text(sql);
-        $(tri+'td.lvl').text(lvl);
-        if (lvl < 0) { lvl = 0; }
-        if (lvl > 100) { lvl = 100; };
-        $(tri+'td.bar div').width(5*lvl+'px');
-        var color = '#808080';
-        if (sql == 'open') { color = 'yellow' };
-        if (sql == 'active') { color = 'red' };
-        $(tri+'td.bar div').css('background-color',color);
-    }
-};
-</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
+
 <body>
-<h2>Signaalwaardes bij PI2NOS</h2>
-<p>
-<!--[if IE]>Deze pagina werkt nog niet met Internet Explorer, gebruik a.u.b. een andere browser zoals Firefox, Safari e.d.<![endif]-->
-<table>
-<tr><th>RX</th><th>Sql</th><th>Signaal</th><th>Bargraph</th></tr>
-<tr class="init"></tr>
-</table>
-</body>
+<h1>Links to different PI2NOS meters</h1>
+<ul>
+<li><a href="circleMap.html">Circles</a></li>
+<li><a href="heatMap.html">Heatmap</a></li>
+<li><a href="metertjes.html">Meters</a></li>
+</body> 
