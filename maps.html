@@ -71,6 +71,12 @@ $(document).ready(function() {
 	  ]
 	}
 
+	var colors = {
+	  closed: "gray",
+	  open: "yellow",
+	  active: "red"
+	}
+
   var myOptions = {
     center: new google.maps.LatLng(52.2368, 5.1729),
     zoom: 8,
@@ -82,8 +88,9 @@ $(document).ready(function() {
 
   map.data.setStyle(function(feature) {
     var magnitude = feature.getProperty('signal');
+    var color = colors[feature.getProperty('squelch')];
     return {
-      icon: getCircle(magnitude)
+      icon: getCircle(magnitude, color)
     };
   });
 
@@ -94,8 +101,8 @@ $(document).ready(function() {
 	  for(var i in repeaters.features) {
 	    var feature = repeaters.features[i];
 	    var receiver = message.rx[feature.id];
-   	    var level = receiver.lvl;  
-	    feature.properties.signal = level;
+	    feature.properties.signal = receiver.lvl;
+	    feature.properties.squelch = receiver.sql;
       }
 
 	  // This may require rework to get rid of efficiency/redraw problems.
@@ -103,13 +110,13 @@ $(document).ready(function() {
   }
 });
 
-function getCircle(magnitude) {
+function getCircle(magnitude, color) {
   var circle = {
     path: google.maps.SymbolPath.CIRCLE,
-    fillColor: 'red',
-    fillOpacity: .2,
+    fillColor: color,
+    fillOpacity: .3,
 //    scale: Math.pow(2, magnitude) / 2,
-    scale: Math.max(10, 2 * magnitude),
+    scale: Math.max(10, 1 * magnitude),
     strokeColor: 'white',
     strokeWeight: .5
   };
