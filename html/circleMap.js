@@ -8,19 +8,38 @@ function circleMap(jQuery) {
       icon: getCircle(magnitude, color)
     };
   });
+  
+  map.data.addGeoJson(receivers);
+
+  for(var i in receivers.features) {
+	var feature = receivers.features[i];
+	var coords = feature.geometry.coordinates;
+	var latLng = new google.maps.LatLng(coords[1], coords[0]);
+
+    draw_circle = new google.maps.Circle({
+        center: latLng,
+        radius: 1000,
+        strokeColor: 'black',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "black",
+        fillOpacity: 0.35,
+        map: map
+    });
+  }
 
   var jsonStream = new EventSource(jsonEventUrl)
   jsonStream.onmessage = function (e) {
 	  var message = JSON.parse(e.data);
 	  
-	  for(var i in receivers.features) {
-	    var feature = receivers.features[i];
-	    var receiver = message.rx[feature.id];
-	    feature.properties.signal = receiver.lvl;
-	    feature.properties.squelch = receiver.sql;
-      }
-
-	  map.data.addGeoJson(receivers);
+	  map.data.forEach(function(feature){
+	    var featureid = feature.getId();
+	    var receiver = message.rx[featureid];
+	    feature.setProperty("signal", receiver.lvl);
+	    feature.setProperty("squelch", receiver.sql);
+	  });
+	  
+//	  map.data.addGeoJson(receivers);
   }
 }
 

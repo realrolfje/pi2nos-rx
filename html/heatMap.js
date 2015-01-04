@@ -50,7 +50,7 @@ function heatMap(jQuery) {
 	  for(var i in heatmapData) {
 	  	var weightedLoc = heatmapData[i];
 	    var receiver = message.rx[weightedLoc.id];
-	    weightedLoc.weight = Math.max(1,1 * receiver.lvl);
+	    weightedLoc.weight = Math.max(0,1 * receiver.lvl);
       }
       heatmap.setData(heatmapData);
   }
