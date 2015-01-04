@@ -5,10 +5,39 @@
 <script type="text/javascript"> 
 
 $(document).ready(function() {
+  var repeaters = {
+	  "type": "FeatureCollection",
+	  "features": [
+		{
+		  "type": "Feature",
+		  "geometry": {
+			"type": "Point",
+			"coordinates": [5.1729, 52.2368]
+		  },
+		  "id":"Rx_Amsterdam",
+		  "properties": {
+			"signal": "10",
+			"squelch" : "closed"
+		  }
+		},
+		{
+		  "type": "Feature",
+		  "geometry": {
+			"type": "Point",
+			"coordinates": [5.022297, 52.100284]
+		  },
+		  "id":"pi2utr",
+		  "properties": {
+			"signal": "10",
+			"squelch" : "closed"
+		  }
+		}
+	  ]
+	}
 
   var myOptions = {
     center: new google.maps.LatLng(52.2368, 5.1729),
-    zoom: 10,
+    zoom: 8,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     mapTypeControl: false
   }
@@ -22,36 +51,16 @@ $(document).ready(function() {
     };
   });
 
-  map.data.addGeoJson(
-	{
-	  "type": "FeatureCollection",
-	  "features": [
-		{
-		  "type": "Feature",
-		  "geometry": {
-			"type": "Point",
-			"coordinates": [5.1729, 52.2368]
-		  },
-		  "id":"pi2nos",
-		  "properties": {
-			"signal": "10"
-		  }
-		},
-		{
-		  "type": "Feature",
-		  "geometry": {
-			"type": "Point",
-			"coordinates": [5.022297, 52.100284]
-		  },
-		  "id":"pi2utr",
-		  "properties": {
-			"signal": "10"
-		  }
-		}
-	  ]
-	});
-});
+  var jsonStream = new EventSource('http://pi2nos.ampr.org:1535/json')
+  jsonStream.onmessage = function (e) {
+	  var message = JSON.parse(e.data);
+	  var level = message.rx.Rx_Amsterdam.lvl;
+	  repeaters.features[0].properties.signal = level;
 
+	  // This may require rework to get rid of efficiency/redraw problems.
+	  map.data.addGeoJson(repeaters);
+  }
+});
 
 function getCircle(magnitude) {
   var circle = {
@@ -59,11 +68,10 @@ function getCircle(magnitude) {
     fillColor: 'red',
     fillOpacity: .2,
 //    scale: Math.pow(2, magnitude) / 2,
-    scale: 8 * magnitude,
+    scale: Math.max(10, 2 * magnitude),
     strokeColor: 'white',
     strokeWeight: .5
   };
-  console.log(circle);
   return circle;
 }
 
