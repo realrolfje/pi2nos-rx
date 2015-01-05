@@ -9,11 +9,16 @@ var colors = {
 var myOptions = {
   center: new google.maps.LatLng(52.2368, 5.1729),
   zoom: 8,
-  mapTypeId: google.maps.MapTypeId.ROADMAP,
-  mapTypeControl: false
+  mapTypeId: google.maps.MapTypeId.TERRAIN,
+  mapTypeControl: true
 }
 
-"Rx_Hilversum,Rx_Utrecht,Rx_Amsterdam,Rx_Zierikzee,Rx_Apeldoorn,Dailyminutes"
+/*
+  HYBRID 	This map type displays a transparent layer of major streets on satellite images.
+  ROADMAP 	This map type displays a normal street map.
+  SATELLITE 	This map type displays satellite images.
+  TERRAIN 	This map type displays maps with physical features such as terrain and vegetation.
+*/
 
 var receivers = {
 	  "type": "FeatureCollection",
