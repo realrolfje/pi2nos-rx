@@ -1,5 +1,5 @@
 function heatMap(jQuery) {
-  var map = new google.maps.Map(document.getElementById("map"), myOptions);
+  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
   map.data.setStyle(function(feature) {
     var magnitude = feature.getProperty('signal');

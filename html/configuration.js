@@ -6,7 +6,7 @@ var colors = {
   active: "red"
 }
 
-var myOptions = {
+var mapOptions = {
   center: new google.maps.LatLng(52.2368, 5.1729),
   zoom: 8,
   mapTypeId: google.maps.MapTypeId.TERRAIN,

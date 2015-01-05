@@ -1,5 +1,5 @@
 function circleMap(jQuery) {
-  var map = new google.maps.Map(document.getElementById("map"), myOptions);
+  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
   for(var i in receivers.features) {
 	var feature = receivers.features[i];
