@@ -50,21 +50,15 @@ function circleMap(jQuery) {
       	var feature = receivers.features[i];
 	    var featureid = feature.id;
 	    var receiver = message.rx[featureid];
-	    feature.signalcircle.fillColor = colors[receiver.sql];
-	    feature.signalcircle.setRadius(getRadius(receiver.lvl));
+	    feature.signalcircle.setOptions(
+          {
+                radius: getRadius(receiver.lvl),
+                fillColor: colors[receiver.sql],
+          });
       }
-
-//	  map.data.forEach(function(feature){
-//	    var featureid = feature.getId();
-//	    var receiver = message.rx[featureid];
-//	    feature.setProperty("signal", receiver.lvl);
-//	    feature.setProperty("squelch", receiver.sql);
-//	  });
-	  
-//	  map.data.addGeoJson(receivers);
   }
 }
 
 function getRadius(level) {
-    return 100 + 140 * level
+    return 300 + (140 * level);
 }
