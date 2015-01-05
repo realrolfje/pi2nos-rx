@@ -1,0 +1,62 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
+<script type="text/javascript"> 
+
+$(document).ready(function() {
+  var repeaters = {
+	  "type": "FeatureCollection",
+	  "features": [
+		{
+		  "type": "Feature",
+		  "geometry": {
+			"type": "Point",
+			"coordinates": [5.1729, 52.2368]
+		  },
+		  "id":"Rx_Amsterdam",
+		  "properties": {
+			"signal": "10",
+			"squelch" : "closed"
+		  }
+		},
+		{
+		  "type": "Feature",
+		  "geometry": {
+			"type": "Point",
+			"coordinates": [5.022297, 52.100284]
+		  },
+		  "id":"pi2utr",
+		  "properties": {
+			"signal": "10",
+			"squelch" : "closed"
+		  }
+		}
+	  ]
+	}
+
+
+ for(var feature in repeaters.features) {
+   console.log(repeaters.features[feature]);
+   var repeaterid = feature.id;
+   console.log(repeaterid);
+  }
+  
+  console.log(repeaters.features[0].properties["squelch"]);
+});
+  
+  
+</script>
+
+<style>
+#map {
+  height:550px;
+  background:transparent;
+}
+</style>
+
+</head>
+
+<body>
+<div id="map"></div> 
+</body> 
