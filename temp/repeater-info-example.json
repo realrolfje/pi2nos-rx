@@ -1,39 +1,50 @@
- {
-  callsign    : "PI2NOS",
-  description : "Bovenregionale repeater, Spectra MX800, SvxLink 14.08",
-  output-freq : 430125, // MHz
-  input-freq  : 431725, // MHz
-  ctcss-in    : 0,    // Hz (0 is off)
-  ctcss-out   : 88.5, // Hz (0 is off)
-  locations: [{
-                  id: "Rx_Hilversum",
-                  name: "Transceiver Mediapark",
-                  description: "4x panel op 200m ASL",
-                  type: ["rx","tx"],
-                  /* Location of the antenna, above sealevel */
-                  location: {long: 5.164326284803233,
-                              lat: 52.24249959861779,
-                              alt: 196}
+{
+  "callsign"     : "PI2NOS",
+  "description"  : "Bovenregionale repeater, Spectra MX800, SvxLink 14.08",
+  "output-freq"  : 430125,
+  "input-freq"   : 431725,
+  "ctcss-in"     : 0,
+  "ctcss-out"    : 88.5,
+  "Rx_Hilversum" : {"name": "Transceiver Mediapark",
+                    "description": "4x panel op 200m ASL",
+                    "type": ["rx","tx"],
+                    "location": {"long": 5.164326284803233,
+                                 "lat" : 52.24249959861779,
+                                 "alt" : 196}
+                   },
+  "Rx_Utrecht"   : {"name": "Receiver IJsselstein",
+                    "description": "Ontvanger in de toren van Lopik",
+                    "type": ["rx"],
+                    "location": {"long": 5.053434032571373,
+                                 "lat" : 52.00992614369851,
+                                 "alt" : 220}
+                   },
+
+
+  "locations" : [{
+                  "id": "Rx_Hilversum",
+                  "name": "Transceiver Mediapark",
+                  "description": "4x panel op 200m ASL",
+                  "type": ["rx","tx"],
+                  "location": {"long": 5.164326284803233,
+                               "lat" : 52.24249959861779,
+                               "alt" : 196}
               },
               {
-                  id: "Rx_Utrecht",
-                  name: "Receiver IJsselstein",
-                  description: "Ontvanger in de toren van Lopik",
-                  type: ["rx"],
-                  /* Location of the antenna, above sealevel */
-                  location: {long: 5.053434032571373,
-                              lat: 52.00992614369851,
-                              alt: 220}
+                  "id": "Rx_Utrecht",
+                  "name": "Receiver IJsselstein",
+                  "description": "Ontvanger in de toren van Lopik",
+                  "type": ["rx"],
+                  "location": {"long": 5.053434032571373,
+                               "lat" : 52.00992614369851,
+                               "alt" : 220}
               },
               {
-                  id: "Rx_Zierikzee",
-                  name: "Receiver Zierikzee",
-                  type: ["rx"],
-                  /* Location of the antenna, above sealevel */
-                  location: {long: 3.932027805927121,
-                              lat: 51.64719069114837,
-                              alt: 55}
+                  "id": "Rx_Zierikzee",
+                  "name": "Receiver Zierikzee",
+                  "type": ["rx"],
+                  "location": {"long": 3.932027805927121,
+                               "lat" : 51.64719069114837,
+                               "alt" : 55}
               }]
 }
-
-

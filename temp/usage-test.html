@@ -1,0 +1,25 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $.getJSON('repeater-info-example.json',
+        function    (repeater) {
+            /* Print the name of the repeater */
+            console.log(repeater.name);
+
+
+            /* Find the name of a single, known location */
+            console.log(repeater.Rx_Utrecht.name);
+
+            /* Print the names of all receivers */
+
+            /* Print the names of all transmitters */
+
+        });
+
+
+    </script>
+</head>
+<body>
+<a href="http://jsonlint.com/">JSON validator</a>
+</body>
