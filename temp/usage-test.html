@@ -4,22 +4,43 @@
     <script type="text/javascript">
       $.getJSON('repeater-info-example.json',
         function    (repeater) {
-            /* Print the name of the repeater */
-            console.log(repeater.name);
-
+            /* Print the callsign of the repeater */
+            $('#repeatername').text(repeater.callsign);
 
             /* Find the name of a single, known location */
-            console.log(repeater.Rx_Utrecht.name);
+            $('#utrechtname').text(repeater.Rx_Utrecht.name);
 
             /* Print the names of all receivers */
+            $.each(repeater, function(key, node) {
+                if (node.type && $.inArray('rx',node.type) >=0){
+                    $('#allreceivers').append(node.name+',');
+                }
+            });
+
+            /* Print the names of all transmitters */
+            $.each(repeater, function(key, node) {
+                if (node.type && $.inArray('tx',node.type) >=0){
+                    $('#alltransmitters').append(node.name+',');
+                }
+            });
 
             /* Print the names of all transmitters */
 
         });
 
 
+
     </script>
 </head>
 <body>
+
+<p>Name of the repeater : <span id="repeatername"/></p>
+
+<p>Name of the receiver Utrecht: <span id="utrechtname"/></p>
+
+<p>All Receivers: <span id="allreceivers"/></p>
+<p>All Transmitter: <span id="alltransmitters"/></p>
+
+
 <a href="http://jsonlint.com/">JSON validator</a>
 </body>
