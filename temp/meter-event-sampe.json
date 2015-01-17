@@ -1,0 +1,12 @@
+{
+  "rxlist": ["Rx_Hilversum", "Rx_Utrecht", "Rx_Amsterdam", "Rx_Zierikzee", "Rx_Apeldoorn", "Dailyminutes"],
+  "rx"    : {
+    "Rx_Utrecht": {"lvl": 1, "sql": "closed"},
+    "Rx_Hilversum": {"lvl": 45, "sql": "active"},
+    "Rx_Zierikzee": {"lvl": 1, "sql": "closed"},
+    "Rx_Apeldoorn": {"lvl": 3, "sql": "open"},
+    "Dailyminutes": {"lvl": 110, "sql": "closed"},
+    "Rx_Amsterdam": {"lvl": 2, "sql": "closed"}
+  },
+  "time"  : "1421524633.241"
+}

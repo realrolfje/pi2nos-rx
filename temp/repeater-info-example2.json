@@ -5,32 +5,23 @@
   "output-freq" : 430125000,
   "ctcss-in"    : 0,
   "ctcss-out"   : 88.5,
+  "echolink-node" : "1234567",
   "uri"         : {
     "homepage"             : "http://www.hobbyscoop.nl/",
     "signalEventStream"    : "http://pi2nos.ampr.org:1535/json",
     "signalWebsocketStream": "http://pi2nos.ampr.org:1535/wsJson/",
     "audiostream"          : "http://icecast.pe1rjv.nl:8000/pi2nos"
   },
-  "hardware"    : {
-    "repeater": {
-      "description": "Base Station/Repeater",
-      "brand"      : "Spectra",
-      "type"       : "MX800",
-      "infoUrl"    : "http://www.spectraeng.com.au/mx800.shtml"
-    },
-    "server"  : {
-      "brand": "Dell",
-      "os"   : "Linux ...",
-    }
-  },
+  "antennalist" : ["Hilversum", "Utrecht", "Zierikzee", "Amsterdam", "Apeldoorn"],
   "antenna"     : {
     "Hilversum": {
-      "location": {
+      "description": "4x panel op 200m ASL",
+      "location"   : {
         "long": 5.164326284803233,
         "lat" : 52.24249959861779,
         "alt" : 196
       },
-      "coverage": {
+      "coverage"   : {
         "type"       : "Polygon",
         "coordinates": [
           {"lon": "", "lat": ""},
@@ -76,37 +67,48 @@
         "lat" : 52.22466339809532,
         "alt" : 180
       }
-
     }
   },
+  "rxlist"      : ["Rx_Hilversum", "Rx_Utrecht", "Rx_Amsterdam", "Rx_Zierikzee", "Rx_Apeldoorn", "Dailyminutes"],
   "Rx_Hilversum": {
-    "name"       : "Transceiver Mediapark",
-    "description": "4x panel op 200m ASL",
-    "type"       : [
-      "rx",
-      "tx"
-    ],
+    "name"       : "Transceiver Hilversum",
+    "description": "Base Station/Repeater",
+    "make"       : "Spectra",
+    "model"      : "MX800",
+    "infoUrl"    : "http://www.spectraeng.com.au/mx800.shtml",
+    "input-freq" : 431725000,
+    "output-freq": 430125000,
     "antenna"    : "Hilversum"
   },
   "Rx_Utrecht"  : {
     "name"       : "Receiver IJsselstein",
-    "description": "Ontvanger in de toren van Lopik",
-    "type"       : ["rx"],
+    "description": "Een buisontvanger",
+    "input-freq" : 431725000,
     "antenna"    : "Utrecht"
   },
-  "Rx_Zierikzee": {
-    "name"   : "Receiver Zierikzee",
-    "type"   : ["rx"],
-    "antenna": "Zierikzee"
-  },
   "Rx_Amsterdam": {
-    "name"   : "Receiver Amsterdam",
-    "type"   : ["rx"],
-    "antenna": "Amsterdam"
+    "name"       : "Receiver Amsterdam",
+    "description": "Een buisontvanger",
+    "input-freq" : 431725000,
+    "antenna"    : "Amsterdam"
+  },
+  "Rx_Zierikzee": {
+    "name"       : "Receiver Zierikzee",
+    "description": "Een buisontvanger",
+    "input-freq" : 431725000,
+    "antenna"    : "Zierikzee"
   },
   "Rx_Apeldoorn": {
-    "name"   : "Receiver Apeldoorn",
-    "type"   : ["rx"],
-    "antenna": "Apeldoorn"
+    "name"       : "Receiver Apeldoorn",
+    "description": "Een buisontvanger",
+    "input-freq" : 431725000,
+    "antenna"    : "Apeldoorn"
+  },
+  "Dailyminutes": {
+    "name"       : "Virtual Receiver, Daily Minutes",
+    "description": "Dialy Minutes, dagelijks om 19:00 uur.",
+    "antenna"    : "Apeldoorn",
+    "type"       : "virtual"
+
   }
 }
