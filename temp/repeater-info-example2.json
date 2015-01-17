@@ -1,11 +1,11 @@
 {
   "callsign"    : "PI2NOS",
   "name"        : "Bovenregionale repeater Hilversum",
-  "input-freq"  : 431725000,
-  "output-freq" : 430125000,
-  "ctcss-in"    : 0,
-  "ctcss-out"   : 88.5,
-  "echolink-node" : "1234567",
+  "input_freq"  : 431725000,
+  "output_freq" : 430125000,
+  "ctcss_in"    : 0,
+  "ctcss_out"   : 88.5,
+  "echolink_node" : "1234567",
   "uri"         : {
     "homepage"             : "http://www.hobbyscoop.nl/",
     "signalEventStream"    : "http://pi2nos.ampr.org:1535/json",
@@ -76,32 +76,32 @@
     "make"       : "Spectra",
     "model"      : "MX800",
     "infoUrl"    : "http://www.spectraeng.com.au/mx800.shtml",
-    "input-freq" : 431725000,
-    "output-freq": 430125000,
+    "input_freq" : 431725000,
+    "output_freq": 430125000,
     "antenna"    : "Hilversum"
   },
   "Rx_Utrecht"  : {
     "name"       : "Receiver IJsselstein",
     "description": "Een buisontvanger",
-    "input-freq" : 431725000,
+    "input_freq" : 431725000,
     "antenna"    : "Utrecht"
   },
   "Rx_Amsterdam": {
     "name"       : "Receiver Amsterdam",
     "description": "Een buisontvanger",
-    "input-freq" : 431725000,
+    "input_freq" : 431725000,
     "antenna"    : "Amsterdam"
   },
   "Rx_Zierikzee": {
     "name"       : "Receiver Zierikzee",
     "description": "Een buisontvanger",
-    "input-freq" : 431725000,
+    "input_freq" : 431725000,
     "antenna"    : "Zierikzee"
   },
   "Rx_Apeldoorn": {
     "name"       : "Receiver Apeldoorn",
     "description": "Een buisontvanger",
-    "input-freq" : 431725000,
+    "input_freq" : 431725000,
     "antenna"    : "Apeldoorn"
   },
   "Dailyminutes": {
