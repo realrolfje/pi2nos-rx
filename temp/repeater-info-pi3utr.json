@@ -1,0 +1,170 @@
+{
+  "callsign"   : "PI3UTR",
+  "name"       : "Bovenregionale repeater IJsselstein",
+  "input_freq" : 144975000,
+  "output_freq": 145575000,
+  "ctcss_in"   : 77,
+  "ctcss_out"  : 77,
+  "echolink_id": 6824,
+  "uri"        : {
+    "homepage"             : "http://www.pi3utr.nl/",
+    "signalEventStream"    : "http://pi3utr.ampr.org:1535/json",
+    "signalWebsocketStream": "ws://pc7x.net:1535/ws/pi3utr",
+    "audiostream"          : "http://icecast.pe1rjv.nl:8000/pi3utr"
+  },
+  "antennalist"  : ["HilversumL", "IJsselsteinH", "IJsselsteinM", "IJsselsteinL" ],
+  "antenna"      : {
+    "HilversumL": {
+      "description": "3el beam richting Noord op 140m ASL",
+      "location"   : {
+        "lon": 5.164326284803233,
+        "lat": 52.24249959861779,
+        "alt": 196
+      },
+      "coverage"   : {
+        "type"       : "Polygon",
+        "coordinates": [
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""}
+        ]
+      }
+    },
+    "IJsselsteinH"  : {
+      "location": {
+        "lon": 5.053434032571373,
+        "lat": 52.00992614369851,
+        "alt": 350
+      },
+      "coverage": {
+        "type"       : "Polygon",
+        "coordinates": [
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""}
+        ]
+      }
+    },
+    "IJsselsteinM"  : {
+      "location": {
+        "lon": 5.053434032571373,
+        "lat": 52.00992614369851,
+        "alt": 300
+      },
+      "coverage": {
+        "type"       : "Polygon",
+        "coordinates": [
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""}
+        ]
+      }
+    },
+    "IJsselsteinL"  : {
+      "location": {
+        "lon": 5.053434032571373,
+        "lat": 52.00992614369851,
+        "alt": 220
+      },
+      "coverage": {
+        "type"       : "Polygon",
+        "coordinates": [
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""},
+          {"lon": "", "lat": ""}
+        ]
+      }
+    }
+  },
+  "rxlist"         : [
+    "Rx1",
+    "NetRx_HVS",
+    "NetRx_ETE",
+    "NetRx_VRZ",
+    "Echolink"
+  ],
+  "rx": {
+    "Rx1"          : {
+      "name"       : "IJsselstein",
+      "description": "Base Station/Repeater",
+      "make"       : "Tait",
+      "model"      : "TB-8100",
+      "input_freq" : 144975000,
+      "antenna"    : "IJsselsteinM",
+      "type"       : "radio"
+    },
+    "NetRx_HVS"    : {
+      "name"       : "Hilversum",
+      "description": "Base Station/Repeater",
+      "make"       : "Tait",
+      "model"      : "TB-8100",
+      "input_freq" : 144975000,
+      "antenna"    : "HilversumL",
+      "type"       : "radio"
+    },
+    "NetRx_ETE"    : {
+      "name"       : "PA00NEWS",
+      "description": "PA00NEWS, wekelijks op vrijdag om 22:30 uur.",
+      "type"       : "virtual"
+    },
+    "NetRx_VRZ"    : {
+      "name"       : "PI4VRZ/A",
+      "description": "PI4VRZ/A, wekelijks op zaterdag om 11:00 uur.",
+      "type"       : "virtual"
+    },
+    "Echolink"     : {
+      "name"       : "Echolink",
+      "description": "Echolink endpoint",
+      "type"       : "echolink",
+      "echolink_id": 6824
+    }
+  },
+  "txlist"         : [
+    "Tx1",
+    "NetTx_HVS",
+    "NetTx_VRZ",
+    "Tx_Stream",
+    "Echolink"
+  ],
+  "tx": {
+    "Tx1"          : {
+      "name"       : "IJsselstein",
+      "description": "Base Station/Repeater",
+      "make"       : "Spectra",
+      "model"      : "MX800",
+      "output_freq": 145575000,
+      "antenna"    : "IJsselsteinL",
+      "type"       : "radio"
+    },
+    "NetTx_HVS"    : {
+      "name"       : "Hilversum",
+      "description": "Base Station/Repeater",
+      "make"       : "Spectra",
+      "model"      : "MX800",
+      "output_freq": 145575000,
+      "antenna"    : "HilversumL",
+      "type"       : "radio"
+    },
+    "NetTx_VRZ"    : {
+      "name"       : "PI4VRZ/A",
+      "description": "PI4VRZ/A, wekelijks op zaterdag om 11:00 uur.",
+      "type"       : "virtual"
+    },
+    "Tx_Stream"    : {
+      "name"       : "Audiostream",
+      "description": "Web audio stream",
+      "type"       : "audiostream",
+      "uri"        : "audiostream"
+    },
+    "Echolink"     : {
+      "name"       : "Echolink",
+      "description": "Echolink endpoint",
+      "type"       : "echolink",
+      "echolink_id": 430125
+    }
+  }
+}
